@@ -1,0 +1,31 @@
+<!--<ion-header>
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+</ion-header>-->
+
+<ion-content padding style="background-color:#e9e9e9; background-image: url('assets/img/huellas2.png'); background-repeat: no-repeat;">
+  <form id="loginForm">
+      <ion-list>
+        <div align="center" style="margin-top:60px; margin-bottom: 20px;"> <img  src="assets/img/logo.png" border="0"></div>
+        <ion-item [hidden]="!errorMessage" ><p align="center" color="danger" ion-text>{{errorMessage}}</p></ion-item>
+        <ion-item>
+          <ion-label>Usuario</ion-label>
+          <ion-input type="text" #usuario required ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Contraseña</ion-label>
+          <ion-input type="password" #contrasena required ></ion-input>
+        </ion-item>
+
+      </ion-list>
+      <div>
+        <button block ion-button class="button button-outline button-positive rounded-top" (click)="doLogin()">Ingresar</button>
+      </div>
+      <div class="descripcion">
+        Powered by BITNETPERU
+      </div>
+  </form>
+
+</ion-content>

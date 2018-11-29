@@ -1,0 +1,143 @@
+<ion-header>
+
+  <ion-navbar>
+  	<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="index < 0">Agregar Pedido</ion-title>
+    <ion-title *ngIf="index >= 0">Ver Pedido</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>	
+	<ion-label class="usuario">  {{ nombreUsuario }} </ion-label>
+	<ion-list>
+		<ion-input type="hidden" [(ngModel)]="cabecera.id" ></ion-input>
+		<ion-input type="hidden" [(ngModel)]="cabecera.usu_regi" ></ion-input>
+		<ion-input type="hidden" [(ngModel)]="cliente.id_clientes" ></ion-input>
+		<ion-input type="hidden" [(ngModel)]="cabecera.usu_regi" ></ion-input>
+		<ion-input type="hidden" [(ngModel)]="cabecera.lat" ></ion-input>
+		<ion-input type="hidden" [(ngModel)]="cabecera.lon" ></ion-input>
+	
+		<!--<ion-item>
+			<ion-label class="texto" floating>Tipo documento</ion-label>
+			<ion-select [(ngModel)]="cabecera.tipo" *ngIf="index == '-1'">
+			<ion-option value="1">FACTURA</ion-option>
+			<ion-option value="2">BOLETA</ion-option>
+		</ion-select>
+		<ion-input type="text"  [(ngModel)]="cabecera.nombre_tipo" *ngIf="index >= 0" [disabled] = "!disabled" ></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label class="texto" floating>Nro. {{cabecera.serie}} - </ion-label>
+			<ion-input type="text" [(ngModel)]="cabecera.nro_venta" *ngIf="index == '-1'" ></ion-input>  (change)="verificarNro()"
+			<ion-input type="text"  [(ngModel)]="cabecera.nro_venta" *ngIf="index >= 0" [disabled] = "!disabled" ></ion-input>
+		</ion-item>-->
+		<ion-item	></ion-item>
+			<ion-item>
+				<ion-label class="texto">Fecha</ion-label>
+				<ion-input type="date"  displayFormat="DD/MM/YYYY"  [(ngModel)]="cabecera.fecha"></ion-input><!--*ngIf="index == '-1'" -->
+				<!-- <ion-input type="text"  [(ngModel)]="cabecera.fecha" *ngIf="index >= 0"  [disabled] = "!disabled" ></ion-input> -->
+			</ion-item>
+			<ion-item color="light" (click)="searchCliente()" *ngIf = "index == '-1'">
+				Cliente
+				<img src="assets/img/añadir.png" alt="" width="45" height="45" item-end/>
+			</ion-item>
+			<ion-item color="light" *ngIf="index >= 0">
+				Cliente
+			</ion-item>
+			<ion-item >
+				{{cliente.nombre}} <br />
+				<div class="descripcion">
+				{{cliente.documento}} <br />
+				<span *ngIf = "index == '-1'">{{cliente.direccion}}  </span>
+				<span *ngIf = "index >= 0"> {{cabecera.direccion}}  </span>
+						 
+				</div>
+			</ion-item>
+			<ion-item>
+				<ion-label class="texto">Despacho</ion-label>
+				<ion-input type="date" displayFormat="DD/MM/YYYY"  [(ngModel)]="cabecera.fechadesp"></ion-input><!-- *ngIf="index == '-1'" -->
+				<!-- <ion-input type="text"  [(ngModel)]="cabecera.fechadesp" *ngIf="index >= 0"  [disabled] = "!disabled" ></ion-input> -->
+			</ion-item>
+			<ion-item>
+				<ion-label class="texto" >Forma de Pago</ion-label>
+					<ion-select [(ngModel)]="cabecera.forma_pago" [disabled]="opcion == 1">
+						<ion-option value="2">CR&Eacute;DITO</ion-option>
+						<ion-option value="1" >CONTADO</ion-option>
+					</ion-select>
+					<!-- *ngIf="index == '-1'"  -->
+				<!-- <ion-input type="text"  [(ngModel)]="desc_pago" *ngIf="index >= 0" [disabled] = "!disabled" ></ion-input> -->
+			</ion-item>
+		<ion-list>
+			<ion-item color="light" (click)="searchProducto()" > <!-- *ngIf = "index == '-1'" -->
+				Productos
+				<img src="assets/img/añadir.png" alt="" width="45" height="45" item-end/>
+			<!--<ion-icon class="texto" name="add-circle" *ngIf = "index == '-1'" item-end></ion-icon>-->
+			</ion-item>
+			<!-- <ion-item color="light"  *ngIf="index >= 0">
+				Productos
+			</ion-item> -->
+		</ion-list>
+		<!-- <ion-list *ngIf = "index >= 0">
+			<ion-item *ngFor="let detalle of detalles">
+				{{detalle.producto}} <br /> {{detalle.cantidad}} x S/. {{detalle.precio | number:'1.2-2'}}  
+					<span class="monto">S/. {{detalle.total | number:'1.2-2'}}</span>
+			</ion-item>
+		</ion-list> -->
+		<ion-list ><!-- *ngIf="index == '-1'" -->
+			<ion-item-sliding *ngFor="let detalle of detalles; let i = index">
+				<ion-item class="producto" (click)="editProduct(detalle, i)">
+					{{detalle.producto}} <br /> {{detalle.cantidad}} x S/. {{detalle.precio | number:'1.2-2'}}  
+					<span class="monto">S/. {{detalle.total | number:'1.2-2'}}</span>
+				</ion-item>
+				<ion-item-options side="right">
+					<button ion-button color="danger" class="button-danger"
+									(click)="borrarProducto( i, detalle )">
+						<ion-icon name="trash"></ion-icon>
+						Borrar
+					</button>
+				</ion-item-options>
+			</ion-item-sliding >
+		</ion-list>
+		<ion-list>
+			<!--<ion-item>
+				<div class="totales">
+					Descuento
+				</div>
+				<div id="subtotal" class="monto">S/. {{cabecera.descuento | number:'1.2-2'}}</div>
+			</ion-item>-->
+			<ion-item>
+				<div class="totales">
+					Subtotal
+				</div>
+				<div id="subtotal" class="monto">S/. {{cabecera.subtotal | number:'1.2-2'}}</div>
+			</ion-item>
+			<ion-item>
+				<div class="totales">
+					I.G.V.
+				</div>
+				<div id="igv" class="monto">S/. {{cabecera.igv | number:'1.2-2'}}</div>
+			</ion-item>
+			<ion-item>
+				<div class="total">
+					TOTAL
+				</div>
+				<div id="total" class="monto-total">S/. {{cabecera.total | number:'1.2-2'}}</div>
+			</ion-item>
+		</ion-list>
+		<ion-item>
+			<ion-label class="texto" >Obvservaci&oacute;n</ion-label>
+			<ion-textarea placeholder="Ingrese un texto..." autocomplete="off" 
+			[(ngModel)]="cabecera.observ" rows="3" maxlength="75"></ion-textarea><!--  *ngIf="index == '-1'" -->
+
+			<!-- <ion-textarea *ngIf="index >= 0" [(ngModel)]="cabecera.observ" rows="3" maxlength="75" 
+				[disabled] = "!disabled"></ion-textarea> -->
+		</ion-item>
+	</ion-list>
+	<div padding>
+		<button block ion-button class="button button-outline button-positive" *ngIf = "index == '-1'" (click)="guardar()" >Guardar</button>
+		<button block ion-button class="button button-outline button-positive" *ngIf = "index >= 0" (click)="guardar()" >Actualizar</button>
+	</div>
+</ion-content>

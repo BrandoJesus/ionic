@@ -1,0 +1,51 @@
+page-edit-venta {
+	.descripcion{
+		color: #6a9dcc !important;
+		padding:0px;
+	}
+	.producto {
+		color: #6a9dcc !important;
+	}
+	.toolbar-background {
+        background-color: #08487c !important;
+    }
+    .toolbar-title, .button-inner {
+       color: #fff !important;
+	}
+	.usuario {
+		background-color: #f8f8f8 !important;
+		padding: 10px;
+		margin: 0px;
+		text-align: center;
+	}
+	.monto{
+		position:absolute; 
+		right:6%; 
+		top:50%; 
+		color: #08487c !important;
+	}
+	.total{
+		color: #000 !important;
+	}
+	.monto-total{
+		position:absolute; 
+		right:6%; 
+		top:50%; 
+		color: #000 !important;
+	}
+	.button{
+        background-color: #08487B !important;
+        border: 1px solid #08487B !important;
+        border-radius: 5%;
+	}
+	.button-danger{
+        background-color: #DD0655 !important;
+        border: 1px solid #DD0655 !important;
+        border-radius: 5%;
+    }
+
+	.texto, .totales {		
+		color: #6a9dcc !important;
+	}
+
+}

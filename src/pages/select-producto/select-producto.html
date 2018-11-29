@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Datos Producto</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="closeModal()">Cancelar</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-9>
+        
+      </ion-col>
+      <ion-col (click)="searchProducto()">
+      <img src="assets/img/añadir.png" alt="" width="45" height="45" >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+      <ion-list>
+        <ion-input type="hidden" [(ngModel)]="productos.id" ></ion-input>
+        <ion-input type="hidden" [(ngModel)]="productos.nro_pedido" ></ion-input>
+        <ion-input type="hidden" [(ngModel)]="productos.id_vendedor" ></ion-input>
+        <ion-input type="hidden" [(ngModel)]="productos.id_lista" ></ion-input>
+        <ion-input type="hidden" id="id_clientes" name="id_clientes" [(ngModel)]="productos.id_clientes" ></ion-input>
+        <ion-input type="hidden"  [(ngModel)]="productos.id_productos" ></ion-input>
+        <ion-input type="hidden"  [(ngModel)]="productos.codigo" ></ion-input>
+        <ion-item>
+          <ion-label color="primary">Nombre</ion-label>
+          <ion-input type="text"  [(ngModel)]="productos.producto" [disabled] = "!disabled" ></ion-input>
+        </ion-item>
+        <ion-item>
+    		  <ion-label color="primary">Precio S/.</ion-label>
+    		  <ion-input type="text"  [(ngModel)]="productos.precio" [disabled] = "!disabled"></ion-input>
+  		  </ion-item>
+        <ion-item>
+          <ion-label color="primary">Cantidad</ion-label>
+          <ion-input type="tel" (ionChange)="importeSinDesc()" [(ngModel)]="productos.cantidad" maxlength="4"></ion-input>
+        </ion-item>
+        <!--<ion-item>
+          <ion-label color="primary">Descuento S/.</ion-label>
+          <ion-input type="number"  (change)="importeConDesc()" [(ngModel)]="productos.descuento" ></ion-input>
+        </ion-item>-->
+        <ion-item>
+          <ion-label color="primary">TOTAL S/.</ion-label>
+          <ion-input type="number"  [(ngModel)]="productos.total" [disabled] = "!disabled" ></ion-input>
+        </ion-item>
+        <ion-input type="hidden"  [(ngModel)]="productos.tipo" ></ion-input>
+      </ion-list>
+      <div padding>
+          <button block ion-button class="button button-outline button-positive" (click)="addProducto()">Agregar</button>
+      </div>
+ 
+
+</ion-content>

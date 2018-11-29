@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-navbar class="header">
+    <button ion-button menuToggle *ngIf='opcion == 0'>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Clientes</ion-title>
+    <!-- <ion-buttons end >
+      <button ion-button class="panelsearch" (click)="onSearch()"><ion-icon name="search"></ion-icon></button>
+    </ion-buttons> --><!--*ngIf='opcion != 1'  -->
+    <ion-buttons end *ngIf='opcion == 1'>
+      <button ion-button (click)="closeModal()">Cancelar</button>
+    </ion-buttons>
+    <ion-buttons end *ngIf='opcion != 1'>
+      <button ion-button (click)="verClienteProspecto()">Prospecto</button>
+    </ion-buttons>
+  </ion-navbar>
+  
+  <ion-row [hidden]="disabled" >
+    <ion-searchbar [hidden]="disabled" (ionInput)="setFilterItems($event)" [(ngModel)]="search"  
+        placeholder="Buscar.."></ion-searchbar>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ion-label class="usuario">  {{ nombreUsuario }} </ion-label>
+	<ion-grid padding>
+    <!-- <ion-row>
+      <ion-searchbar (ionInput)="setFilterItems($event)" [(ngModel)]="search"  placeholder="Buscar.."></ion-searchbar>
+    </ion-row> -->
+    <!--<ion-row>
+      <ion-col col-9>
+        <ion-item>
+          <ion-label color="primary" floating>Buscar clientes</ion-label>
+          <ion-input type="text" #buscar></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col (click)="addCliente()">
+        <img src="assets/img/añadir.png" alt="" >
+      </ion-col>
+    </ion-row>-->
+  </ion-grid>
+  
+  <ion-list *ngIf="opcion == 0" padding>
+    <button  ion-item *ngFor="let item of items " (click)="editCliente(items.indexOf(item),item.id,item.vendedor,item.nombre,item.tipo_documento,item.documento,item.direccion,item.telefono,item.email, item.estado)">
+      
+      {{item.nombre }} <br />
+      <div class="descripcion">{{item.documento}}<br />
+        {{item.direccion}} <br />
+        {{item.telefono}} <br /> {{item.email}}<br>
+      </div>
+    </button>
+  </ion-list>
+
+  <ion-list *ngIf="opcion == 1" padding>
+    <button ion-item *ngFor="let item of items" (click)="selectCliente(item.id_clientes,item.nombre,item.email,item.documento,item.direccion,item.vendedor, item.fpago,item.credito,item.contado, item.tipo_documento)">
+      
+      {{item.nombre}} <br />
+      <div class="descripcion">{{item.documento}}<br />
+        {{item.direccion}} <br />
+        {{item.telefono}} <br /> {{item.email}}<br/>
+        <!-- lista precio: {{ item.listaprecio}} -->      
+      </div>
+    </button>
+  </ion-list>
+</ion-content>

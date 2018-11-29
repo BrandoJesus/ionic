@@ -1,0 +1,87 @@
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle *ngIf='opcion == 0'>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Clientes Prospecto</ion-title>
+      <ion-buttons end *ngIf='opcion == 1'>
+        <button ion-button (click)="closeModal()">Cancelar</button>
+      </ion-buttons>
+  </ion-navbar>
+  <ion-row [hidden]="disabled">
+    <ion-searchbar [hidden]="disabled" (ionInput)="setFilterItems($event)" [(ngModel)]="search"  
+        placeholder="Buscar.."></ion-searchbar>
+  </ion-row>
+
+</ion-header>
+
+<ion-content>
+  <ion-label class="usuario">  {{ nombreUsuario }} </ion-label>
+	<ion-grid padding>
+    <!-- <ion-row>
+      <ion-searchbar (ionInput)="setFilterItems($event)" [(ngModel)]="search"  placeholder="Buscar.."></ion-searchbar>
+    </ion-row> -->
+    <ion-row>
+      <ion-col col-10>
+        <ion-item>
+          <!--<ion-label color="primary" floating>Buscar clientes</ion-label>
+          <ion-input type="text" #buscar></ion-input>-->
+        </ion-item>
+      </ion-col>
+      <ion-col (click)="addCliente()">
+        <img src="assets/img/añadir.png" alt="" width="45" height="45">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <div *ngIf="cantidad == 0" class=" centrado" >      
+    <!-- <img src="assets/img/huellas.png" role="img" alt="Huellas" title="Huellas" ><br> -->
+    <span style="font-size: 30px;" > No existen Clientes Prospectos!! </span><br/> 
+  </div>
+  
+  <ion-list *ngIf="opcion == 0" padding>
+    <!-- <button  ion-item *ngFor="let item of items " 
+    (click)="editCliente(items.indexOf(item),item.id,item.vendedor,item.nombre,item.tipo_documento,item.documento,item.direccion,item.telefono,item.email, item.estado)">
+      
+      {{item.nombre }} <br />
+      <div class="descripcion">{{item.documento}}<br />
+        {{item.direccion}} <br />
+        {{item.telefono}} <br /> {{item.email}}<br>
+      </div>
+    </button> -->
+    
+    <ion-item-sliding *ngFor="let item of items; let i = index">
+      <ion-item ion-item (click)="editCliente(items.indexOf(item),item.id,item.vendedor,item.nombre,item.tipo_documento,item.documento,item.direccion,item.telefono,item.email, item.estado)">
+        {{item.nombre}} <br />
+        <div class="descripcion">{{item.documento}}<br />
+          {{item.direccion}} <br />
+          {{item.telefono}} <br /> {{item.email}}<br/>
+          <!-- lista precio: {{ item.listaprecio}} -->      
+        </div>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" 
+                (click)="borrarCliente( i, item )">
+          <ion-icon name="trash"></ion-icon>
+          Borrar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding >
+
+  </ion-list>
+
+  <ion-list *ngIf="opcion == 1" padding>
+    <button ion-item *ngFor="let item of items" class="button" 
+    (click)="selectCliente(item.id_clientes,item.nombre,item.email,item.documento,item.direccion,item.vendedor,item.listaprecio, item.tipo_documento)">
+      
+      {{item.nombre}} <br />
+      <div class="descripcion">{{item.documento}}<br />
+        {{item.direccion}} <br />
+        {{item.telefono}} <br /> {{item.email}}<br/>
+        lista precio: {{ item.listaprecio}}      
+      </div>
+    </button>
+    
+  </ion-list>
+</ion-content>

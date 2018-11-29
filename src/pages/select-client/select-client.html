@@ -1,0 +1,61 @@
+<!--
+  Generated template for the ProductoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle *ngIf='opcion == 0'>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Reparto Clientes </ion-title>
+    <ion-buttons end ><!-- *ngIf='opcion == 1' -->
+      <button ion-button (click)="closeModal()">Cancelar</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>  
+  <ion-label class="usuario">  {{ nombreUsuario }} </ion-label>
+  <!--<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>-->
+  <!--<ion-list *ngIf="opcion == 0">
+    <button ion-item *ngFor="let item of items">
+      
+      {{item.nombre}} <br />
+      <div class="descripcion">{{item.documento}}<br />
+        {{item.direccion}} <br />
+        {{item.telefono}}  {{item.email}}
+    </button>
+  </ion-list>-->
+
+  <!--<ion-input type="hidden" [(ngModel)]="idptoent" ></ion-input>-->
+  
+  <ion-list *ngIf="opcion == 1" padding>
+      <button ion-item *ngFor="let item of items" (click)="selectClientReparto(item.id_clientes,item.id_ptoent,item.direccion,item.referencia)">
+        
+        {{ nombre }} <br />
+        <div class="descripcion">
+          {{ documento }} <br />
+          <span class="direccion">DIR. REPARTO {{ items.indexOf(item) +1 }}:<br /></span>
+          {{ item.direccion }} <br />
+          {{ item.referencia }} <br />
+        </div>
+      </button>
+  </ion-list>
+
+  <ion-list *ngIf="opcion == 0" padding>
+    <button ion-item  *ngFor="let item of items" (click)="selectClient(item.id_clientes,item.nombre,item.direccion,item.email,item.vendedor)">
+      
+      {{ item.nombre }}
+      <div class="descripcion">
+        {{ item.documento }} <br />
+        <div *ngIf="item.direccion == null || item.direccion == ''" > LA MISMA DIRECCI&Oacute;N</div>
+        <div *ngIf="item.direccion != ''" >{{ item.direccion }}</div><br>
+      </div>
+    </button>
+</ion-list>
+</ion-content>

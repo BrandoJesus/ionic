@@ -1,0 +1,24 @@
+page-producto {
+	.descripcion{
+		color: #6a9dcc !important;
+	}
+
+	.monto{
+		position:absolute; 
+		right:6%; 
+		top:50%; 
+		color: #08487c !important;
+	}
+	.toolbar-background {
+        background-color: #08487c !important;
+    }
+    .toolbar-title, .button-inner {
+       color: #fff !important;
+	}
+	.usuario {
+		background-color: #f8f8f8 !important;
+		padding: 10px;
+		margin: 0px;
+		text-align: center;
+	}
+}

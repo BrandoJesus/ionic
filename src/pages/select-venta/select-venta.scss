@@ -1,0 +1,49 @@
+page-select-venta {
+	
+	.descripcion{
+		color: #6a9dcc !important;
+	}
+	.monto{
+		position:absolute; 
+		right:6%; 
+		top:50%; 
+		color: #08487c !important;
+	}
+	.toolbar-background {
+		background-color: #08487c !important;
+	}
+	.toolbar-title, .button-inner {
+		color: #fff !important;
+	}
+	.usuario {
+		background-color: #f8f8f8 !important;
+		padding: 10px;
+		margin: 0px;
+		text-align: center;
+	}
+	.button{
+		background-color: #DD0655 !important;
+		border: 1px solid #DD0655 !important;
+		border-radius: 5%;
+	}
+	.checkbox-md .checkbox-checked{		
+		background-color: #DD0655 !important;
+		border: 1px solid #DD0655 !important;
+	}
+	.scroll-content{
+		background-image: url('assets/img/huellas.png');
+		background-repeat: no-repeat;
+		background-size:cover;
+		width: 100%;
+		height: 100%;
+	}
+	.centrado {
+		position: absolute;
+		text-align: center;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		-webkit-transform: translate(-50%, -50%);
+		color: #ccc;
+	}
+}

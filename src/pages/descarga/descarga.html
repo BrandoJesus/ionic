@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Descargar Datos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>  
+  <ion-label class="usuario">  {{ nombreUsuario }} </ion-label>
+  <ion-list padding>
+    <button ion-item (click)="clientes()">
+      <!--<img src="../assets/img/huellas.png" alt="" item-start width="30px" height="30px">-->
+      <img src="assets/img/icono-cliente.png" alt="" item-start >
+      <!--<ion-icon color="secondary" name="people" item-start></ion-icon>-->
+		  Clientes
+      <span *ngIf="loading==0">Descargando...</span>
+      <ion-icon color="secondary" *ngIf="loading==1 && data.response != 'false'" name="checkmark-circle" class="custom-icon" item-end></ion-icon>
+      <ion-icon color="primary" *ngIf="loading==1 && data.response == 'false'" name="close-circle" item-end></ion-icon>
+      <ion-icon color="danger" *ngIf="loading==2" name="close-circle" item-end></ion-icon>
+      
+    </button>
+    <button ion-item (click)="productos()">
+        <img src="assets/img/icono-producto.png" alt="" item-start >
+      <!--<ion-icon color="secondary" name="cart" item-start></ion-icon>-->
+		  Productos
+      <span *ngIf="loading2==0">Descargando...</span>
+      <ion-icon color="secondary" *ngIf="loading2==1 && data2.response != 'false'" name="checkmark-circle" class="custom-icon" item-end></ion-icon>
+      <ion-icon color="primary" *ngIf="loading2==1 && data2.response == 'false'" name="close-circle" item-end></ion-icon>
+      <ion-icon color="danger" *ngIf="loading2==2" name="close-circle" item-end></ion-icon>
+    </button>
+    <button ion-item (click)="ventas()">
+        <img src="assets/img/icono-pedido.png" alt="" item-start >
+      <!--<ion-icon color="secondary" name="list-box" item-start></ion-icon>-->
+		  Iniciar Pedidos
+      <span *ngIf="loading3==0">Descargando...</span>
+      <ion-icon color="secondary" *ngIf="loading3==1 " name="checkmark-circle" class="custom-icon" item-end></ion-icon><!-- && data3.response != 'false' -->
+      <ion-icon color="primary" *ngIf="loading3==1 && data3.response == 'false'" name="close-circle" item-end></ion-icon>
+      <ion-icon color="danger" *ngIf="loading3==2" name="close-circle" item-end></ion-icon>
+      
+    </button>
+  </ion-list>
+</ion-content>

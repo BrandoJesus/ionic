@@ -1,0 +1,19 @@
+
+Agregar estado de Agregar la opción de borrar ítem de producto
+ como pedidos en el móvil
+
+Agregar Forma de pago : crédito o contado, por defecto contado, 
+validar si se activa para elegir el combo.
+
+
+Al final del pedido, después del total, colocar casilla para recibir 
+observación al pedido, máximo de 3 líneas
+
+Considerar boleta de venta, validar el campo “tipo_documento” 
+en la tabla de cliente ( 1 = RUC, 2 = DNI ), la boleta Venta tiene 
+el IGV incluido.
+
+
+/*pendiente*/
+Limitar el tiempo para cerrar el APP (en caso se pierda el celular 
+del asesor)

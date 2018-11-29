@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar class="header">
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Enviar Pedidos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content> 
+  <ion-refresher  (ionRefresh)="recargar($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Suelta para recargar"
+    refreshingSpinner="circles" refreshingText="Recargando..."></ion-refresher-content>
+  </ion-refresher>
+  <div  class="fondo"><!-- *ngIf="cantidad == 0"-->
+    <ion-label class="usuario">  {{ nombreUsuario }} </ion-label>
+
+    <ion-grid>
+        <div *ngIf="cantidad == 0" class="centrado" >      
+          <!-- <img src="assets/img/huellas.png" role="img" alt="Huellas" title="Huellas" ><br> -->
+          <span style="font-size: 30px;" > No existen Pedidos!! </span><br/> 
+        </div>  
+
+        <ion-list *ngFor="let item of items; let i = index">
+          <ion-item>
+            <ion-checkbox checked=" item.checked" (ionChange)="selectCheck(item)" ></ion-checkbox>
+            <ion-label>
+              {{item.nombre}}
+              <div class="descripcion">
+                <!--{{item.nombre_tipo}}  {{item.serie}} - -->
+                {{item.nro_pedido}} <br />
+                {{item.fch_regi}} 
+              </div>
+              <div class="monto">S/. {{ item.total | number:'1.2-2' }}</div>
+            </ion-label>
+          </ion-item>
+    
+          <!-- <ion-item-options side="right">
+            <button ion-button color="danger" 
+                    (click)="borrarVenta( i, item )">
+              <ion-icon name="trash"></ion-icon>
+              Borrar
+            </button>
+          </ion-item-options> -->
+        </ion-list>
+
+    </ion-grid>
+
+    
+    <div padding *ngIf="cantidad > 0">
+      <button block ion-button class="button button-outline button-positive" (click)="enviarPedidos()" >Enviar</button>
+    </div>
+  </div>
+</ion-content>

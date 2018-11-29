@@ -1,0 +1,30 @@
+{
+  "name": "Ionic",
+  "short_name": "Ionic",
+  "start_url": "index.html",
+  "display": "standalone",
+  "icons": [{
+    "src": "assets/icon/favicon.png",
+    "sizes": "16x16",
+    "type": "image/png"
+  },{
+    "src": "assets/imgs/login.png",
+    "sizes": "219x148",
+    "type": "image/png"
+  },{
+    "src": "assets/imgs/portadalogin.png",
+    "sizes": "219x148",
+    "type": "image/png"
+  },{
+    "src": "assets/imgs/huellas.png",
+    "sizes": "176x334",
+    "type": "image/png"
+  },{
+    "src": "assets/imgs/ajax-loader.gif",
+    "sizes": "32x32",
+    "type": "image/png"
+  }
+],
+  "background_color": "#4e8ef7",
+  "theme_color": "#4e8ef7"
+}
